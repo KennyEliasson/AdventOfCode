@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Solutions
 {
@@ -13,51 +14,51 @@ namespace Solutions
 
         public (int, int) FindTwoNumbersMatchingSum(int sum)
         {
-            for (int i = 0; i < _expenses.Count-1; i++)
+            for (int leftTermIndex = 0; leftTermIndex < _expenses.Count-1; leftTermIndex++)
             {
-                var current = _expenses[i];
-                for (int j = 0; j < _expenses.Count-1; j++)
+                var leftTerm = _expenses[leftTermIndex];
+                for (int rightTermIndex = 0; rightTermIndex < _expenses.Count-1; rightTermIndex++)
                 {
-                    if(i == j)
+                    if(leftTermIndex == rightTermIndex)
                         continue;
 
-                    var testAgainst = _expenses[j];
+                    var rightTerm = _expenses[rightTermIndex];
 
-                    if (current + testAgainst == sum)
+                    if (leftTerm + rightTerm == sum)
                     {
-                        return (current, testAgainst);
+                        return (leftTerm, rightTerm);
                     }
                 }
             }
 
-            return (0, 0);
+            throw new ApplicationException($"Found no matching numbers equal to {sum}");
         }
         
         public (int, int, int) FindThreeNumbersMatchingSum(int sum)
         {
-            for (int i = 0; i < _expenses.Count-1; i++)
+            for (int leftTermIndex = 0; leftTermIndex < _expenses.Count-1; leftTermIndex++)
             {
-                var current = _expenses[i];
-                for (int j = 0; j < _expenses.Count-1; j++)
+                var leftTerm = _expenses[leftTermIndex];
+                for (int middleTermIndex = 0; middleTermIndex < _expenses.Count-1; middleTermIndex++)
                 {
-                    var testAgainst = _expenses[j];
+                    var middleTerm = _expenses[middleTermIndex];
                     
-                    if(current+testAgainst > sum)
+                    if(leftTerm+middleTerm > sum)
                         continue;
 
-                    for (int k = 0; k < _expenses.Count - 1; k++)
+                    for (int rightTermIndex = 0; rightTermIndex < _expenses.Count - 1; rightTermIndex++)
                     {
-                        var testAgainstTwo = _expenses[k];
-                        if (current + testAgainst + testAgainstTwo == sum)
+                        var rightTerm = _expenses[rightTermIndex];
+                        if (leftTerm + middleTerm + rightTerm == sum)
                         {
-                            return (current, testAgainst, testAgainstTwo);
+                            return (leftTerm, middleTerm, rightTerm);
                         }
                         
                     }
                 }
             }
 
-            return (0, 0, 0);
+            throw new ApplicationException($"Found no matching numbers equal to {sum}");
         }
     }
 }

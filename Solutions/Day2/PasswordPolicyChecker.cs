@@ -26,13 +26,11 @@ namespace Solutions
                 var charAtPositionOne = passwordCharArray[policyPositionOne-1];
                 var charAtPositionTwo = passwordCharArray[policyPositionTwo-1];
 
-                if (charAtPositionOne == policyLetter && charAtPositionTwo == policyLetter)
-                {
+                if (charAtPositionOne == policyLetter && charAtPositionTwo == policyLetter) {
                     continue;
                 }
 
-                if (charAtPositionOne == policyLetter || charAtPositionTwo == policyLetter)
-                {
+                if (charAtPositionOne == policyLetter || charAtPositionTwo == policyLetter) {
                     validPasswords++;
                 }
             }
@@ -51,12 +49,9 @@ namespace Solutions
 
                 var policyLetterCount = password.Count(x => x == policyLetter);
 
-                if (policyLetterCount >= policyMinOccurences && policyLetterCount <= policyMaxOccurences)
-                {
+                if (policyLetterCount >= policyMinOccurences && policyLetterCount <= policyMaxOccurences) {
                     validPasswords++;
-                }
-                else
-                {
+                } else {
                     invalidPassword++;
                 }
             }
