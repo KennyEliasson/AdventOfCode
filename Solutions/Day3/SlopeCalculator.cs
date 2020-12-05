@@ -18,10 +18,9 @@ namespace Solutions
     
     public class SlopeCalculator
     {
-        private List<SlopeRow> _rows;
+        private readonly List<SlopeRow> _rows;
 
-
-        public SlopeCalculator(List<string> map)
+        public SlopeCalculator(IEnumerable<string> map)
         {
             _rows = new List<SlopeRow>();
             foreach (var line in map) {

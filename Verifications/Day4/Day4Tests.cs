@@ -1,6 +1,7 @@
 using System.IO;
 using System.Linq;
 using Solutions;
+using Solutions.Day4;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -33,7 +34,7 @@ hcl:#cfa07d eyr:2025 pid:166559648
 iyr:2011 ecl:brn hgt:59in";
             
             var passportInput = input.Split("\r\n").ToList();
-            var passportValidation = new PassportValidation<PassportSimple>(passportInput);
+            var passportValidation = new PassportValidation<SimplePassport>(passportInput);
 
             var result = passportValidation.Validate();
             _outputHelper.WriteLine($"The result is {result.ToString()}");
@@ -43,7 +44,7 @@ iyr:2011 ecl:brn hgt:59in";
         public void Task1()
         {
             var passportInput = File.ReadAllLines("Day4/input.txt").ToList();
-            var passportValidation = new PassportValidation<PassportSimple>(passportInput);
+            var passportValidation = new PassportValidation<SimplePassport>(passportInput);
 
             var result = passportValidation.Validate();
             
@@ -54,7 +55,7 @@ iyr:2011 ecl:brn hgt:59in";
         public void Task2()
         {
             var passportInput = File.ReadAllLines("Day4/input.txt").ToList();
-            var passportValidation = new PassportValidation<PassportAdvanced>(passportInput);
+            var passportValidation = new PassportValidation<AdvancedPassport>(passportInput);
 
             var result = passportValidation.Validate();
             
